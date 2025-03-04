@@ -1,11 +1,20 @@
 package com.example.greeting_app.service;
 
+import com.example.greeting_app.model.Greeting;
+import com.example.greeting_app.repository.GreetingRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GreetingService {
+class GreetingService {
 
-    public String getGreetingMessage() {
-        return "Hello World";
+    private final GreetingRepository greetingRepository;
+
+    public GreetingService(GreetingRepository greetingRepository) {
+        this.greetingRepository = greetingRepository;
+    }
+
+    public Greeting saveGreeting(String message) {
+        Greeting greeting = new Greeting(message);
+        return greetingRepository.save(greeting);
     }
 }
