@@ -5,21 +5,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Table(name = "USERS") // H2 Console me USERS table milega
 @Getter
 @Setter
-@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    private String name;
+    @Getter
     private String email;
-
-    @Column(nullable = false)
+    @Getter
     private String password;
 
-    @Column(nullable = false)
-    private String fullName;
 }

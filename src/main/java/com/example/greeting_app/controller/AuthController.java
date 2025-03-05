@@ -1,10 +1,10 @@
 package com.example.greeting_app.controller;
 
-import com.example.greeting_app.dto.RegisterRequest;
+import com.example.greeting_app.model.User;
 import com.example.greeting_app.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-@CrossOrigin(origins = "*")
+
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -16,8 +16,12 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody RegisterRequest request) {
-        String response = userService.registerUser(request);
-        return ResponseEntity.ok(response);
+    public ResponseEntity<?> register(@RequestBody User user) {
+        return ResponseEntity.ok(userService.registerUser(user));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody User user) {
+        return ResponseEntity.ok(userService.loginUser(user));
     }
 }
