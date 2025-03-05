@@ -1,7 +1,7 @@
 package com.example.greeting_app.service;
 
 import com.example.greeting_app.model.Greeting;
-import com.example.greeting_app.repository.GreetingRepository;
+import com.example.greeting_app.Repository.GreetingRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
